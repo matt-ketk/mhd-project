@@ -1,6 +1,0 @@
-\beamer@sectionintoc {1}{Introduction}{3}{1}{1}
-\beamer@sectionintoc {2}{Mathematical Methods}{7}{2}{2}
-\beamer@sectionintoc {3}{Literature Analysis and Derivations}{11}{3}{3}
-\beamer@sectionintoc {4}{Summary and Goals}{21}{4}{4}
-\beamer@sectionintoc {5}{References}{24}{5}{5}
-\beamer@sectionintoc {6}{Supplements}{26}{6}{6}
