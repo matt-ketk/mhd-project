@@ -1,0 +1,82 @@
+\documentclass{article}
+
+\usepackage[margin=1.0in]{geometry}
+\usepackage{amsmath}
+\usepackage{lmodern}
+
+\begin{document}
+\section{Linearization}
+We begin with equations (15) and (16) in HKT,
+\begin{equation}
+    \frac{\partial \psi}{\partial t} + \vec{V}\cdot \vec{\nabla} \psi= \frac{\eta}{\mu_0} \nabla ^2 \psi
+\end{equation} 
+\begin{equation}
+    \rho\left( \frac{\partial }{\partial t} + \vec{V}\cdot \vec{\nabla} \right)\omega_z = \vec{B}\cdot \vec{\nabla}j_z
+\end{equation} 
+
+where
+\begin{equation}
+    \label{eq:hk15}
+    \vec{V}= \hat{z}\times \vec{\nabla}\phi
+\end{equation} 
+
+\begin{equation}
+    \label{eq:hk16}
+    \omega_z = \hat{z}\cdot \vec{\nabla}\times \vec{V}=\nabla ^{2}\phi
+\end{equation} 
+
+Perturbation Methods approximate a solution from an exact solution from a simpler problem by introducing a small
+``perturbing'' parameter $\varepsilon$ and express a solution in the form of a series,
+\begin{equation}
+    \psi=\sum_{n=0}^{\infty} \varepsilon^{n}\psi_n=\psi_0+\varepsilon\psi_1+\varepsilon^{2}\psi_2+\ldots
+\end{equation} 
+
+For the project, we are interested in the 0th and 1st order solutions. This means including terms up to (and including) $\sim O(\varepsilon^2)$ are
+enough to reveal the 0th and 1st order solutions. Expanding (\ref{eq:hk15}) and (\ref{eq:hk16}), we get
+\begin{equation}
+    \frac{\partial}{\partial t} \left(\psi_0+\varepsilon\psi_1+\varepsilon^{2}\psi_2 \right) + \left( \vec{V}_0 + \varepsilon \vec{V}_1 + \varepsilon^2 \vec{V} \right) \cdot \vec{\nabla} \left(\psi_0+\varepsilon\psi_1+\varepsilon^{2}\psi_2 \right) = \frac{\eta}{\mu_0}\nabla ^{2} \left( \psi_0+\varepsilon\psi_1+\varepsilon^{2}\psi_2 \right) 
+\end{equation} 
+
+\begin{equation}
+    \begin{split}
+        \rho&\left( \frac{\partial }{\partial t} + \left( \vec{V}_0 + \varepsilon \vec{V}_1 + \varepsilon^2 \vec{V}_2 \right) \cdot \vec{\nabla} \right) \left(\omega_z^{(0)} + \varepsilon \omega_z^{(1)} + \varepsilon ^{2} \omega_z^{(2)} \right) =\\
+        &\left( \vec{B}_0 + \varepsilon \vec{B}_1 + \varepsilon^2 \vec{B}_2 \right) \cdot \vec{\nabla}\left(j_z^{(0)} + \varepsilon j_z^{(1)} + \varepsilon^2 j_z^{(2)}  \right) 
+    \end{split}
+\end{equation} 
+where $\vec{V}_i = \hat{z}\times \vec{\nabla} \phi_i$ and $\omega_z^{(i)}=\nabla ^{2}\phi_i.$
+
+Re-grouping the terms by order of $\varepsilon$, we get for (\ref{eq:hk15})
+\begin{equation}
+    \label{eq:hk15lin}
+    \begin{split}
+        \varepsilon^0 &: \frac{\partial \psi_0}{\partial t} + \vec{V}_0 \cdot \vec{\nabla} \psi_0 = \frac{\eta}{\mu_0}\nabla ^{2}\psi_0 \\
+        \varepsilon^1 &: \frac{\partial \psi_1}{\partial t} + \vec{V}_0 \cdot \vec{\nabla} \psi_1 + \vec{V}_1 \cdot \vec{\nabla} \psi_0 = \frac{\eta}{\mu_0}\nabla ^{2}\psi_1
+    \end{split}
+\end{equation}
+
+and we get for (\ref{eq:hk16})
+\begin{equation}
+    \label{eq:hk16lin}
+    \begin{split}
+        \varepsilon^0 &: \rho\left[ \frac{\partial}{\partial t} + \vec{V}_0 \cdot \vec{\nabla} \right] \omega_z^{(0)} = \vec{B}_0 \cdot \vec{\nabla}j_z^{(0)} \\
+        \varepsilon^1 &: \rho\left[\frac{\partial \omega_z^{(1)}}{\partial t} + \vec{V}_0 \cdot \vec{\nabla}\omega_z^{(1)} + \vec{V}_1 \cdot \vec{\nabla}\omega_z^{(0)}\right] = \vec{B}_0 \cdot \vec{\nabla}j_z^{(1)} + \vec{B}_1 \cdot \vec{\nabla}j_z^{(0)}
+    \end{split}
+\end{equation} 
+
+Additional assumptions can be made to further simplify the PDEs. First, since resistivity $\eta\sim O(\varepsilon)$, the resistivity term in the RH side of the 1st order equation in (\ref{eq:hk15lin}) is negligible (set to zero.)
+Another assumption is that $\vec{V}_0=0$, since we are concerned with a system in equilibrium. The resulting equations become for (\ref{eq:hk15lin})
+\begin{equation}
+    \begin{split}
+        \varepsilon^0 &: \frac{\partial \psi_0}{\partial t} = 0 \\
+        \varepsilon^1 &: \frac{\partial \psi_1}{\partial t} + \vec{V}_1 \cdot \vec{\nabla} \psi_0 = 0
+    \end{split}
+\end{equation} 
+
+and for (\ref{eq:hk16lin}),
+\begin{equation}
+    \begin{split}
+        \varepsilon^0 &: \rho\frac{\partial}{\partial t}\omega_z^{(0)} = \rho\frac{\partial}{\partial t}\nabla ^{2} \phi_0 = \vec{B}_0 \cdot \vec{\nabla}j_z^{(0)} = 0 \\ 
+                \varepsilon^1 &: \rho\left[\frac{\partial \omega_z^{(1)}}{\partial t} + \vec{V}_1 \cdot \vec{\nabla}\omega_z^{(0)}\right] = \vec{B}_0 \cdot \vec{\nabla}j_z^{(1)} + \vec{B}_1 \cdot \vec{\nabla}j_z^{(0)}
+    \end{split}
+\end{equation} 
+\end{document}
