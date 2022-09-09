@@ -66,6 +66,7 @@ and we get for (\ref{eq:hk16})
 Additional assumptions can be made to further simplify the PDEs. First, since resistivity $\eta\sim O(\varepsilon)$, the resistivity term in the RH side of the 1st order equation in (\ref{eq:hk15lin}) is negligible (set to zero.)
 Another assumption is that $\vec{V}_0=0$, since we are concerned with a system in equilibrium. For (\ref{eq:hk15lin}), the resulting equations become
 \begin{equation}
+    \label{eq:hk15lin2}
     \begin{split}
         \varepsilon^0 &: \frac{\partial \psi_0}{\partial t} = 0 \\
         \varepsilon^1 &: \frac{\partial \psi_1}{\partial t} + \vec{V}_1 \cdot \vec{\nabla} \psi_0 = 0
@@ -74,9 +75,42 @@ Another assumption is that $\vec{V}_0=0$, since we are concerned with a system i
 
 and for (\ref{eq:hk16lin}),
 \begin{equation}
+    \label{eq:hk15lin2}
     \begin{split}
         \varepsilon^0 &: \rho\frac{\partial}{\partial t}\omega_z^{(0)} = \rho\frac{\partial}{\partial t}\nabla ^{2} \phi_0 = \vec{B}_0 \cdot \vec{\nabla}j_z^{(0)} = 0 \\ 
-                \varepsilon^1 &: \rho\left[\frac{\partial \omega_z^{(1)}}{\partial t} + \vec{V}_1 \cdot \vec{\nabla}\omega_z^{(0)}\right] = \vec{B}_0 \cdot \vec{\nabla}j_z^{(1)} + \vec{B}_1 \cdot \vec{\nabla}j_z^{(0)}
+        \varepsilon^1 &: \rho\left[\frac{\partial \omega_z^{(1)}}{\partial t} + \vec{V}_1 \cdot \vec{\nabla}\omega_z^{(0)}\right] = \vec{B}_0 \cdot \vec{\nabla}j_z^{(1)} + \vec{B}_1 \cdot \vec{\nabla}j_z^{(0)}
     \end{split}
 \end{equation} 
+
+By taking the curl of both sides of (14) in HKT, the force balance equation, we get
+\begin{equation}
+    \label{eq:hk14}
+    \begin{split}
+        \nabla \times \left[\rho \left( \frac{\partial}{\partial t} \vec{v} + \left( \vec{v} \cdot \vec{\nabla} \right) \cdot \vec{v} \right)\right] &= \nabla \times \left[- \nabla p + \vec{j}\times \vec{B}\right] \\
+                                                                                                                                                     &= \nabla \times \left( \vec{j}\times \vec{B} \right) 
+    \end{split}
+\end{equation} 
+Getting the linearized 1st order expression of the RH side of (\ref{eq:hk14}), we can use vector calculus identities to rearrange the expression into the following form,
+\begin{equation}
+    \begin{split}
+        \nabla \times \left( \vec{j}_0 \times \vec{B}_1 \right) &+ \nabla \times \left( \vec{j}_1 + \vec{B}_0 \right) \\
+                                                                &= \vec{j}_0 (\vec{\nabla} \cdot \vec{B}_1) - \vec{B}_1 (\vec{\nabla} \cdot \vec{j}_0) \\
+                                                                &- \left( \vec{B}_1 \cdot \vec{\nabla}  \right) \vec{j}_0 - \left( \vec{j}_0 \cdot  \vec{\nabla}  \right) \vec{B}_1 \\
+                                                                &+ \vec{j}_1 (\vec{\nabla} \cdot \vec{B}_0) - \vec{B}_0 (\vec{\nabla} \cdot \vec{j}_1) \\
+                                                                &+ \left( \vec{B}_0 \cdot \vec{\nabla}  \right) \vec{j}_1 - \left( \vec{j}_1 \cdot  \vec{\nabla}  \right) \vec{B}_0 \\
+    \end{split}
+\end{equation} 
+By applying relations from Maxwell's equations (i.e. $\vec{\nabla} \cdot \vec{B}=0$) and the continuity of charge conditions due to equilibrium (i.e. $\vec{\nabla} \cdot \vec{j}=0$), we can eliminate the following terms,
+\begin{equation}
+    \begin{split}
+        \nabla \times \left( \vec{j}_0 \times \vec{B}_1 \right) &+ \nabla \times \left( \vec{j}_1 + \vec{B}_0 \right) = \\
+                                                                &- \left( \vec{B}_1 \cdot \vec{\nabla}  \right) \vec{j}_0 - \left( \vec{j}_0 \cdot  \vec{\nabla}  \right) \vec{B}_1 \\
+                                                                &+ \left( \vec{B}_0 \cdot \vec{\nabla}  \right) \vec{j}_1 - \left( \vec{j}_1 \cdot  \vec{\nabla}  \right) \vec{B}_0 \\
+    \end{split}
+\end{equation} 
+Since we are concerned with the z-component of the expression, we can rewrite the RH side expression as
+\begin{equation}
+    \vec{B}_1 \cdot \vec{\nabla} j_z^{(0)} + \vec{B}_0 \cdot \vec{\nabla} j_z^{(1)} - \vec{j}_0 \cdot \vec{\nabla} B_z^{(1)} - \vec{j}_1 \cdot \vec{\nabla} B_z^{(0)}
+\end{equation} 
+From $\frac{\vec{\nabla} \times \vec{B}_i}{\mu_0}=\vec{j}_i$
 \end{document}
