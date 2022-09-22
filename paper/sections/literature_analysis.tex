@@ -1,0 +1,35 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+
+\begin{document}
+\subsection{Dewar et al. (2017)}
+This paper describes magnetic flux in a cross section of toroidal plasma under rippled boundary conditions. The boundary ripples are better understood through visualizing the slab “HKT-Beltrami” Slab Model, which transforms a thin, annular section of the cross-section into a 2D Cartesian coordinate system. The x-axis is in the radial direction, while the y-axis is in the poloidal direction, which wraps the left edge to the right edge because of the periodicity. The red line in the center of the diagram represents the ideal interface of plasma, where a current would be going in and out of the page.
+
+Given this representation, the rippled boundary conditions can be modeled as a relatively simple sinusoid with a small amplitude alpha.
+
+From the paper, the magnetic flux is expressed as a linear combination of sinusoidal functions. This solution form fits criterion such as the Helmholtz equation and the slab model geometry (which is Cartesian.)
+
+To find the coefficients in the equation, there were two ripple boundary conditions. Bdy-1 describes the ripple implicitly, and makes it easier to solve for. However, the solution is only accurate for small values of amplitude or alpha. Bdy-2 is a function of position for the ripple boundary and is accurate for higher values of alpha. Though, the solution from applying Bdy-2 can be difficult to solve.
+
+Here, Bdy-1 is solved and plotted on the left. The magnitude of the flux is greatest in regions of warm colors such as yellow. The gradient of the plot reflects some of the features in the flux presented in the paper. Also in the literature, as the magnitude of alpha increases, the boundary conditions of Bdy-1 start to diverge from Bdy-2.
+
+For Bdy-2, since the boundary condition is expressed as a function of position, substituting x into the general solution yields compositions of sinusoidal functions. There were two approaches to handling these terms. Either an expansion of the nested sinusoidals into a series of Bessel functions, or a Taylor expansion approximation with respect to alpha.
+
+\subsection{Wang and Bhattacharjee (1992)}
+
+The Wang Bhattacharjee paper provides insight into the timescales as the plasma evolves under the boundary ripples presented in the previous paper. Briefly, the characteristic timescales of each phase are dependent on the exponential weightings of the Alfven and Resistive characteristic timescales. 
+
+At the beginning of the phases, the plasma timescale is more influenced by the Alfven timescale, which relates to more ideal effects in the plasma. Over time, the weighting transitions more onto the resistive timescales.
+
+
+\subsection{Hahm and Kulsrud (1985)}
+
+Finally, the Hahm, Kulsrud paper details the PDEs describing the magnetic flux within a plasma, with resistive effects included. The equation presented is a combination of the induction and fluid momentum conservation equations. V is the flow velocity field of the plasma, which is related to the gradient of a stream function phi.
+
+To linearize the PDE, perturbation methods were employed to create a system of PDEs, up to the epsilon squared term. Then, some terms of order zero (also known as the equilibrium term) were assumed to be zero. The flow velocity of order zero was assumed to be 0. Another assumption was that since the resistivity coefficient is on the order of epsilon squared, the resistivity term would disappear in the order 0 to 1 equations. The presence of the resistive term also influences what structures might arise in the magnetic flux, such as islands or sinusoidal structures.
+
+This eventually works down to a linearized version of the PDE, equation (12). “K” is the wave number, B0 is the magnetic field along the y-component, and a is the spatial size of the system, such as the size of the slab model presented in Dewar et al.
+
+    
+\end{document}
+

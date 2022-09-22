@@ -1,0 +1,258 @@
+\documentclass[aip,graphicx]{revtex4-1}
+%\documentclass{jpp}
+\usepackage{graphicx}
+% \usepackage{epstopdf, epsfig}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, bm}
+
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{corollary}{Corollary}
+
+\usepackage{color} 
+\usepackage[normalem]{ulem}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Formatting %
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrsq}[1]{\left[ #1 \right]}
+\newcommand{\lra}[1]{\left\langle #1 \right\rangle}
+\newcommand{\lrfrac}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\lrsqfrac}[2]{\left[\frac{#1}{#2}\right]}
+%\newcommand{\ie}{i.e.\ }
+%\newcommand{\eg}{e.g.\ }
+%\newcommand{\cf}{cf.\ }
+%\newcommand{\viz}{\textit{viz.}\ }
+\newcommand{\needref}{\textcolor{red}{[REF]}~}
+
+% Functions %
+\newcommand{\psih}{\hat{\psi}}
+\newcommand{\xbdy}{x_{bdy}(y)}
+\newcommand{\besj}[2]{J_{#1}\lr{#2}}
+\newcommand{\besi}[2]{I_{#1}\lr{#2}}
+
+% Symbols %
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complexes}{\mathbb{C}}
+\newcommand{\muo}{\mu_{0}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%\shorttitle{Short title}
+%\shortauthor{A. M. Wright and M. Ketkaroonkul}
+
+\title{Title}
+
+\author{A. M. Wright}
+\email[]{awright@pppl.gov}
+
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Derivation of generalised nonlinear shielded solutions}\label{sec:2}
+
+
+From Eq.\ (64) of \citet{dewar2017}, the ansatz for the general solution for $\psih(x,y)$ is given by,
+\begin{align}
+\psih(x,y)=c_0 \cos\lr{\mu x} + \sum_{l=1}^{\infty}c_l\cosh\lr{\kappa_l x}\cos\lr{\frac{lmy}{a}}+d_0\sin\lr{\mu x}+\sum_{l=1}^{\infty}d_l\sinh\lr{\kappa_l x}\cos\lr{\frac{lmy}{a}},\label{eq2.1}
+\end{align}
+where $\kappa^2_l=\lr{lm/a}^2-\mu^2$ and $\kappa_l\in\reals$ since $\lr{lm/a}^2>\mu^2$.\\
+
+On the domain $\Omega_{+}$, the two boundary conditions are,
+	\begin{align}
+	\psih(x=0,y)&=-\lra{\psi},\label{eq2.2}\\
+	\psih(\xbdy,y)&=\psi_a-\lra{\psi}-\lra{F_0}\psi_U\lr{\xbdy;\mu}, \label{eq2.3}
+	\end{align}
+	where,
+	\begin{align}
+	\xbdy&=a\lrsq{1-\alpha\cos\lr{k_y y}}, \label{eq2.4}\\
+	\psi_U(x;\mu)&=\frac{1-\cos\lr{\muo x}}{\muo}. \label{eq2.5}
+	\end{align}
+	
+Using \eqref{eq2.2}, it follows that,
+	\begin{align}
+	c_0&=-\lra{\psi},\label{eq2.6}\\
+	c_l&=0, \quad\text{for all }l\geq1.\label{eq2.7}
+	\end{align}
+	
+Next, we want to solve for $d_0$ and $d_l$ using \eqref{eq2.3}. 
+Before proceeding, we first note the following identities and relations;
+	\begin{align}
+	\sin\lr{\alpha-\beta}&=\sin\lr{\alpha}\cos\lr{\beta}-\cos\lr{\alpha}\sin\lr{\beta},\label{eq2.8}\\
+	\cos\lr{\alpha-\beta}&=\cos\lr{\alpha}\cos\lr{\beta}+\sin\lr{\alpha}\sin\lr{\beta},\label{eq2.9}\\
+	\sinh\lr{\alpha-\beta}&=\sinh\lr{\alpha}\cosh\lr{\beta}-\cosh\lr{\alpha}\sinh\lr{\beta},\label{eq2.10}\\
+	\cos\lr{\alpha}\cos\lr{\beta}&=\frac{1}{2}\lrsq{\cos\lr{\alpha-\beta}+\cos\lr{\alpha+\beta}},\label{eq2.11}\\
+	\cosh\lr{x}&=\cos\lr{i x},\label{eq2.12}\\
+	\sinh\lr{x}&=-i\sin\lr{i x},\label{eq2.13}\\
+	\cos\lr{t\cos\lr{x}}&=\besj{0}{t}+2\sum_{k=1}^{\infty}\lr{-1}^k\besj{2k}{t}\cos\lr{2kx},\label{eq2.14}\\
+	\sin\lr{t\cos\lr{x}}&=2\sum_{k=0}^{\infty}\lr{-1}^k\besj{2k+1}{t}\cos\lr{\lr{2k+1}x},\label{eq2.15}\\
+	\besi{n}{x}&=i^{-n}\besj{n}{ix},\label{eq2.16}
+	\end{align}
+        for $\{x,t\}\in\complexes$.\\
+
+First, we introduce the change of variables, $z=my/a$.
+Using \eqref{eq2.6} and \eqref{eq2.7}, together with \eqref{eq2.13}, \eqref{eq2.1} becomes,
+    \begin{align}
+     &d_0\sin\lr{\mu a\lrsq{1-\alpha\cos\lr{z}}}+\sum_{l=1}^{\infty}d_l\sinh\lr{\kappa_l a\lrsq{1-\alpha\cos\lr{z}}}\cos\lr{z}\\
+     &=d_0\sin\lr{\mu a\lrsq{1-\alpha\cos\lr{z}}}-i\sum_{l=1}^{\infty}d_l\sin\lr{i\kappa_l a\lrsq{1-\alpha\cos\lr{z}}}\cos\lr{z}.\label{eq2.17}
+    \end{align}
+Next, we use \eqref{eq2.8} to expand the sine terms in \eqref{eq2.17}.
+    Noting that,
+    \begin{align}
+        \sin\lr{\mu a\lrsq{1-\alpha\cos\lr{z}}}&=\sin\lr{\mu a}\cos\lr{\mu a \alpha\cos\lr{z}}-\cos\lr{\mu a}\sin\lr{\mu a\alpha\cos\lr{z}},\\
+        \sin\lr{i\kappa_l a\lrsq{1-\alpha\cos\lr{z}}}&=\sin\lr{i\kappa_l a}\cos\lr{i\kappa_l a \alpha\cos\lr{z}}-\cos\lr{i\kappa_l a}\sin\lr{i\kappa_l a\alpha\cos\lr{z}},
+    \end{align}
+    then \eqref{eq2.17} becomes,
+    \begin{multline}
+        d_0\lrsq{\sin\lr{\mu a}\cos\lr{\mu a \alpha\cos\lr{z}}-\cos\lr{\mu a}\sin\lr{\mu a\alpha\cos\lr{z}}}\\
+        -i\sum_{l=1}^{\infty} d_l\cos\lr{l z}\lrsq{\sin\lr{i\kappa_l a}\cos\lr{i\kappa_l a \alpha\cos\lr{z}}-\cos\lr{i\kappa_l a}\sin\lr{i\kappa_l a\alpha\cos\lr{z}}}.\label{eq2.18}
+    \end{multline}
+Using \eqref{eq2.14} and \eqref{eq2.15}, we can expand the nested sine and cosine functions in \eqref{eq2.18};
+    \begin{align}
+        \cos\lr{\mu a\alpha\cos\lr{z}}&=\besj{0}{\mu a \alpha}+2\sum_{n=1}^{\infty}\lr{-1}^n\besj{2n}{\mu a \alpha}\cos\lr{2nz},\label{eq2.19}\\
+        \sin\lr{\mu a\alpha\cos\lr{z}}&=2\sum_{n=0}^{\infty}\lr{-1}^n\besj{2n+1}{\mu a \alpha}\cos\lr{\lr{2n+1}z},\label{eq2.20}\\
+        \cos\lr{i\kappa_l a \alpha\cos\lr{z}}&=\besj{0}{i\kappa_l a \alpha}+2\sum_{n=1}^{\infty}\lr{-1}^n\besj{2n}{i\kappa_l a \alpha}\cos\lr{2nz},\label{eq2.21}\\
+        \sin\lr{i\kappa_l a \alpha\cos\lr{z}}&=2\sum_{n=0}^{\infty}\lr{-1}^n\besj{2n+1}{i\kappa_l a \alpha}\cos\lr{\lr{2n+1}z}.\label{eq2.22}
+    \end{align}
+Using \eqref{eq2.16}, we can write \eqref{eq2.21} and \eqref{eq2.22} as,
+    \begin{align}
+        \cos\lr{i\kappa_l a \alpha\cos\lr{z}}&=\besi{0}{\kappa_l a \alpha}+2\sum_{n=1}^{\infty}\besi{2n}{\kappa_l a \alpha}\cos\lr{2nz},\label{eq2.23}\\
+        \sin\lr{i\kappa_l a \alpha\cos\lr{z}}&=2i\sum_{n=0}^{\infty}\besi{2n+1}{\kappa_l a \alpha}\cos\lr{\lr{2n+1}z}.\label{eq2.24}
+    \end{align}
+Substituting \eqref{eq2.19}, \eqref{eq2.20}, \eqref{eq2.23} and \eqref{eq2.24} into \eqref{eq2.18} yields,
+    \begin{multline}
+        d_0\left[\sin\lr{\mu a}\lr{\besj{0}{\mu a \alpha}+2\sum_{n=1}^{\infty}\lr{-1}^n\besj{2n}{\mu a \alpha}\cos\lr{2nz}}\right.\\
+        \left.-2\cos\lr{\mu a}\lr{\sum_{n=0}^{\infty}\lr{-1}^n\besj{2n+1}{\mu a \alpha}\cos\lr{\lr{2n+1}z}}\right]\\
+        -i\sum_{l=1}^{\infty}d_l\cos\lr{lz}\left[\sin\lr{i\kappa_l a}\lr{\besi{0}{\kappa_l a \alpha}+2\sum_{n=1}^{\infty}\besi{2n}{\kappa_l a \alpha}\cos\lr{2nz}}\right.\\
+        \left.-2i\cos\lr{i\kappa_l a}\lr{\sum_{n=0}^{\infty}\besi{2n+1}{\kappa_l a \alpha}\cos\lr{\lr{2n+1}z}}\right],
+    \end{multline}
+        which can be further simplified to,
+         \begin{multline}
+        d_0\left[\sin\lr{\mu a}\lr{\besj{0}{\mu a \alpha}+2\sum_{n=1}^{\infty}\lr{-1}^n\besj{2n}{\mu a \alpha}\cos\lr{2nz}}\right.\\
+        \left.-2\cos\lr{\mu a}\lr{\sum_{n=0}^{\infty}\lr{-1}^n\besj{2n+1}{\mu a \alpha}\cos\lr{\lr{2n+1}z}}\right]\\
+        +\sum_{l=1}^{\infty}d_l\cos\lr{lz}\left[\sinh\lr{\kappa_l a}\lr{\besi{0}{\kappa_l a \alpha}+2\sum_{n=1}^{\infty}\besi{2n}{\kappa_l a \alpha}\cos\lr{2nz}}\right.\\
+        \left.-2\cosh\lr{\kappa_l a}\lr{\sum_{n=0}^{\infty}\besi{2n+1}{\kappa_l a \alpha}\cos\lr{\lr{2n+1}z}}\right],\label{eq2.25}
+    \end{multline}
+    using \eqref{eq2.12} and \eqref{eq2.13}.
+Using \eqref{eq2.11}, note that,
+    \begin{align}
+        \cos\lr{lz}\cos\lr{2nz}&=\frac{1}{2}\lrsq{\cos\lr{\lr{l-2n}z}+\cos\lr{\lr{l+2n}z}},\label{eq2.26}\\
+        \cos\lr{lz}\cos\lr{\lr{2n+1}z}&=\frac{1}{2}\lrsq{\cos\lr{\lr{l-2n-1}z}+\cos\lr{\lr{l+2n+1}z}}.\label{eq2.27}
+    \end{align}
+Substituting \eqref{eq2.26} and \eqref{eq2.27} into \eqref{eq2.25} yields,
+         \begin{multline}
+        d_0\left[\sin\lr{\mu a}\lr{\besj{0}{\mu a \alpha}+2\sum_{n=1}^{\infty}\lr{-1}^n\besj{2n}{\mu a \alpha}\cos\lr{2nz}}\right.\\
+        \left.-2\cos\lr{\mu a}\lr{\sum_{n=0}^{\infty}\lr{-1}^n\besj{2n+1}{\mu a \alpha}\cos\lr{\lr{2n+1}z}}\right]\\
+        +\sum_{l=1}^{\infty}d_l\sinh\lr{\kappa_l a}\besi{0}{\kappa_l a \alpha}\cos\lr{lz}\\
+        +\sum_{l=1}^{\infty}d_l\sinh\lr{\kappa_l a}\lr{  
+        \sum_{n=1}^{\infty}\besi{2n}{\kappa_l a \alpha}\lrsq{\cos\lr{\lr{l-2n}z}+\cos\lr{\lr{l+2n}z}}}\\
+        -\sum_{l=1}^{\infty}d_l\cosh\lr{\kappa_l a}\lr{\sum_{n=0}^{\infty}\besi{2n+1}{\kappa_l a \alpha}\lrsq{\cos\lr{\lr{l-2n-1}z}+\cos\lr{\lr{l+2n+1}z}}}.\label{eq2.28}
+        \end{multline}
+This is the unknown side, which must be equated with the known side in order to solve for the unknown coefficients, $d_0$ and $d_l$.
+The known side is given by the RHS of \eqref{eq2.3}, which can be written as,
+        \begin{align}
+            \psi_a-\lra{\psi}-\lra{F_0}\psi_U\lr{\xbdy(y);\mu}&=\psi_a-\lra{\psi}-\frac{\lra{F_0}}{\mu}-\frac{\lra{F_0}}{\mu}\cos\lr{\mu a\lrsq{1-\alpha\cos\lr{z}}}.\label{eq2.29}
+        \end{align}
+Using \eqref{eq2.9} together with \eqref{eq2.19} and \eqref{eq2.20}, this becomes,
+        \begin{multline}
+        \psi_a-\lra{\psi}-\frac{\lra{F_0}}{\mu}\lr{1-\cos\lr{\mu a}\besj{0}{\mu a \alpha}}-\frac{2\lra{F_0}}{\mu}\left[\cos\lr{\mu a}\lr{\sum_{n=1}^{\infty}\lr{-1}^n\besj{2n}{\mu a \alpha}\cos\lr{2nz}}\right.\\
+        \left.+\sin\lr{\mu a}\lr{\sum_{n=0}^{\infty}\lr{-1}^n\besj{2n+1}{\mu a \alpha}\cos\lr{\lr{2n+1}z}}\right].\label{eq2.30}\\    
+        \end{multline}
+To solve for the unknown coefficients, $d_0$ and $d_l$, we will use the orthogonality of the trigonometric functions. Specifically, we will use the fact that,
+    \begin{align}
+        \int_0^{2\pi}\cos\lr{m z}\cos\lr{n z}dz = \pi\delta_{m}^{n}.\label{eq2.31}
+    \end{align}
+
+Multiplying the unknown side \eqref{eq2.28} by $\cos\lr{p z}$ for some $p\geq 0$, integrating from $0$ to $2\pi$ and using \eqref{eq2.31} yields,
+    \begin{multline}
+        2\pi d_0\left[\sin\lr{\mu a}\lr{\besj{0}{\mu a \alpha}\delta_{0}^{p}+\sum_{n=1}^{\infty}\lr{-1}^n\besj{2n}{\mu a \alpha}\delta_{2n}^{p}}\right.\\
+        \left.-\cos\lr{\mu a}\lr{\sum_{n=0}^{\infty}\lr{-1}^n\besj{2n+1}{\mu a \alpha}\delta_{2n+1}^{p}}\right]\\
+        +\pi\sum_{l=1}^{\infty}d_l\sinh\lr{\kappa_l a}\besi{0}{\kappa_l a \alpha}\delta_{l}^{p}\\
+        +\pi\sum_{l=1}^{\infty}d_l\sinh\lr{\kappa_l a}\lr{  
+        \sum_{n=1}^{\infty}\besi{2n}{\kappa_l a \alpha}\lrsq{\delta_{l-2n}^{p}+\delta_{l+2n}^{p}}}\\
+        -\pi\sum_{l=1}^{\infty}d_l\cosh\lr{\kappa_l a}\lr{\sum_{n=0}^{\infty}\besi{2n+1}{\kappa_l a \alpha}\lrsq{\delta_{l-2n-1}^{p}+\delta_{l+2n+1}^{p}}}.\label{eq2.32}    
+    \end{multline}
+The known side \eqref{eq2.30} becomes,
+        \begin{multline}
+        2\pi\lrsq{\psi_a-\lra{\psi}-\frac{\lra{F_0}}{\mu}\lr{1-\cos\lr{\mu a}\besj{0}{\mu a \alpha}}}\delta_{0}^{p}\\
+        -\frac{2\pi\lra{F_0}}{\mu}\left[\cos\lr{\mu a}\lr{\sum_{n=1}^{\infty}\lr{-1}^n\besj{2n}{\mu a \alpha}\delta_{2n}^{p}}\right.
+        \left.+\sin\lr{\mu a}\lr{\sum_{n=0}^{\infty}\lr{-1}^n\besj{2n+1}{\mu a \alpha}\delta_{2n+1}^{p}}\right].\label{eq2.33}\\    
+        \end{multline}
+To evaluate the Kronecker-$\delta$ functions, we will sum over $n$ on both the unknown and known sides. For the unknown side, \eqref{eq2.32} becomes,
+    \begin{multline}
+        2\pi d_0\left[\sin\lr{\mu a}\lr{\besj{0}{\mu a \alpha}\delta_{0}^{p}+\lr{-1}^{p/2}\besj{p}{\mu a \alpha}}\right.\left.-\cos\lr{\mu a}\lr{-1}^{(p-1)/2}\besj{p}{\mu a \alpha}\right]\\
+        +\pi d_p\sinh\lr{\kappa_p a}\besi{0}{\kappa_p a \alpha}\\
+        +\pi\sum_{l=1}^{\infty}d_l\sinh\lr{\kappa_l a}  
+        \lrsq{\besi{l-p}{\kappa_l a \alpha}+\besi{p-l}{\kappa_l a \alpha}}-\pi\sum_{l=1}^{\infty}d_l\cosh\lr{\kappa_l a}\lrsq{\besi{l-p}{\kappa_l a \alpha}+\besi{p-l}{\kappa_l a \alpha}}.\label{eq2.34}    
+    \end{multline}
+Using the fact that,
+    \begin{align}
+        \besi{-n}{z}=\besi{n}{x},
+    \end{align}
+    we can write \eqref{eq2.34} as,
+    \begin{multline}
+        2\pi d_0\left[\sin\lr{\mu a}\besj{0}{\mu a \alpha}\delta_{0}^{p}+i^p\besj{p}{\mu a \alpha}\lr{\sin\lr{\mu a}+i\cos\lr{\mu a}}\right]\\
+        +\pi d_p\sinh\lr{\kappa_p a}\besi{0}{\kappa_p a \alpha}+2\pi\sum_{l=1}^{\infty}d_l\lrsq{\sinh\lr{\kappa_l a}-\cosh\lr{\kappa_l a}}\besi{l-p}{\kappa_l a \alpha}.\label{eq2.35}    
+    \end{multline}
+The known side \eqref{eq2.33} evaluates to,
+        \begin{multline}
+        2\pi\lrsq{\psi_a-\lra{\psi}-\frac{\lra{F_0}}{\mu}\lr{1-\cos\lr{\mu a}\besj{0}{\mu a \alpha}}}\delta_{0}^{p}\\
+        -\frac{2\pi i^p\lra{F_0}}{\mu}\left[\cos\lr{\mu a}-i\sin\lr{\mu a}\right]\besj{p}{\mu a \alpha}.\label{eq2.36}
+        \end{multline}
+Finally, using the fact that $e^{-ix}=\cos\lr{x}-i\sin\lr{x}$, \eqref{eq2.35} can be written as,
+    \begin{multline}
+        2\pi d_0\left[\sin\lr{\mu a}\besj{0}{\mu a \alpha}\delta_{0}^{p}+i^{p+1}e^{-i\mu a}\besj{p}{\mu a \alpha}\right]\\
+        +\pi d_p\sinh\lr{\kappa_p a}\besi{0}{\kappa_p a \alpha}+2\pi\sum_{l=1}^{\infty}d_l\lrsq{\sinh\lr{\kappa_l a}-\cosh\lr{\kappa_l a}}\besi{l-p}{\kappa_l a \alpha},\label{eq2.37}    
+    \end{multline}
+        whereas \eqref{eq2.36} becomes,
+        \begin{align}
+        2\pi\lrsq{\psi_a-\lra{\psi}-\frac{\lra{F_0}}{\mu}\lr{1-\cos\lr{\mu a}\besj{0}{\mu a \alpha}}}\delta_{0}^{p}-\frac{2\pi i^p e^{-i\mu a}\lra{F_0}}{\mu}\besj{p}{\mu a \alpha}.\label{eq2.38}
+        \end{align}
+Equating \eqref{eq2.37} and \eqref{eq2.38} yields,
+        \begin{multline}
+        \text{For }p=0:\quad d_0\sin\lr{\mu a}\besj{0}{\mu a \alpha}= \lr{\psi_a-\lra{\psi}-\frac{\lra{F_0}}{\mu}\lrsq{1-\cos\lr{\mu a}\besj{0}{\mu a \alpha}}}\label{eq2.39},
+    \end{multline}
+        and
+        \begin{multline}
+        \text{Otherwise:}\\
+        d_0\left[i^{p+1}e^{-i\mu a}\besj{p}{\mu a \alpha}\right]
+        +\frac{d_p}{2}\sinh\lr{\kappa_p a}\besi{0}{\kappa_p a \alpha}+\sum_{l=1}^{\infty}d_l\lrsq{\sinh\lr{\kappa_l a}-\cosh\lr{\kappa_l a}}\besi{l-p}{\kappa_l a \alpha}\\
+        = -\frac{i^p e^{-i\mu a}\lra{F_0}}{\mu}\besj{p}{\mu a \alpha}.\label{eq2.40}
+    \end{multline}
+    
+From \eqref{eq2.39} we find,
+    \begin{align}
+    \quad d_0=\frac{\mu\lrsq{\psi_a-\lra{\psi}}-\lra{F_0}}{\mu \sin\lr{\mu a}\besj{0}{\mu a \alpha}}+ \frac{\lra{F_0}\cot\lr{\mu a}}{\mu}.\label{eq2.41}  
+    \end{align}
+    
+It then follows from \eqref{eq2.40} that,
+    \begin{multline}
+        \frac{d_p}{2}\sinh\lr{\kappa_p a}\besi{0}{\kappa_p a \alpha}+\sum_{l=1}^{\infty}d_l\lrsq{\sinh\lr{\kappa_l a}-\cosh\lr{\kappa_l a}}\besi{l-p}{\kappa_l a \alpha}\\
+        = -d_0\left[i^{p+1}e^{-i\mu a}\besj{p}{\mu a \alpha}\right]-\frac{i^p e^{-i\mu a}\lra{F_0}}{\mu}\besj{p}{\mu a \alpha},\label{eq2.42}
+    \end{multline}
+        where $d_0$ is given by \eqref{eq2.41}.\\
+        
+{\color{blue} Equation \eqref{eq2.42} contains two parameters ($p$ and $\max\lr{l}$) and should be interpreted as describing a system of simultaneous equations, the solution of which will give each coefficient $d_l$ up to $\max\lr{l}$, where $\max\lr{l}$ is the maximum number of Fourier modes retained in the ansatz given by Eq.\ (64) of \citet{dewar2017}.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{jpp}
+\bibliography{master}
+
+\end{document}

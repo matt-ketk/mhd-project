@@ -1,0 +1,62 @@
+\documentclass[aip,graphicx]{revtex4-1}
+%\documentclass[aip,reprint]{revtex4-1}
+\draft % marks overfull lines with a black rule on the right
+
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, bm}
+\usepackage{multirow}
+\usepackage{stmaryrd}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+
+\usepackage{color} 
+\usepackage[normalem]{ulem}
+\usepackage{hyperref}
+\usepackage{bibentry}
+\usepackage{subfiles}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+ \definecolor{red}{rgb}{1,0,0}
+ \definecolor{gre}{rgb}{0,1,0}
+ \definecolor{blu}{rgb}{0,0,1}
+
+ \newcommand{\red}[1]{{\color{red} #1}}
+ \newcommand{\gre}[1]{{\color{gre} #1}}
+ \newcommand{\blu}[1]{{\color{blu} #1}}
+
+\begin{document}
+
+\subfile{sections/title.tex}
+
+\section{Abstract}
+\subfile{sections/abstract.tex}
+
+\section{Introduction}
+\subfile{sections/introduction.tex}
+
+% May move this section into appendix instead.
+% \section{Mathematical Methods}
+% \subfile{sections/mathematical_methods.tex}
+
+\section{Literature Analysis and Derivations}
+\subfile{sections/literature_analysis.tex}
+
+\section{Further Work and Considerations}
+\subfile{sections/further_work.tex}
+
+\section{Appendix}
+\subfile{sections/appendix.tex}
+
+\bibliographystyle{abbrv}
+\bibliography{bibliography.bib}
+
+
+\end{document}
