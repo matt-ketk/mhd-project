@@ -32,7 +32,28 @@
 \includegraphics[scale=.1]{doe_logo.png}\break
 \end{textblock}
 
+% Format Commands
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrsq}[1]{\left[ #1 \right]}
+\newcommand{\lra}[1]{\left\langle #1 \right\rangle}
+\newcommand{\lrfrac}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\lrsqfrac}[2]{\left[\frac{#1}{#2}\right]}
+%\newcommand{\ie}{i.e.\ }
+%\newcommand{\eg}{e.g.\ }
+%\newcommand{\cf}{cf.\ }
+%\newcommand{\viz}{\textit{viz.}\ }
+\newcommand{\needref}{\textcolor{red}{[REF]}~}
 
+% Functions %
+\newcommand{\psih}{\hat{\psi}}
+\newcommand{\xbdy}{x_{bdy}(y)}
+\newcommand{\besj}[2]{J_{#1}\lr{#2}}
+\newcommand{\besi}[2]{I_{#1}\lr{#2}}
+
+% Symbols %
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complexes}{\mathbb{C}}
+\newcommand{\muo}{\mu_{0}}
 
 
 \begin{textblock}{28}(.75,2.2)
@@ -67,6 +88,8 @@ Multiregion Relaxed MHD (MRxMHD) is a model proposed to account for resistive ef
 In order to test the presence of interfaces in resistive plasma, where we typically expect current sheet structures to break down,
 \begin{itemize}
     \item Application of mathematical methods -- Boundary Layer Theory, Perturbation Methods, Fourier Analysis
+    \item Deriving equations from Dewar et al. (2017), Hahm and Kulsrud (1985)
+    \item Analyzing Alfven $\tau_A$ and 
 \end{itemize}
 \end{block}
 
@@ -92,35 +115,45 @@ General form of solution is made to fit:
     \end{split}
 \end{equation} 
 
-The paper also presents the following boundary conditions
-Bdy-1: implicit description of boundary, accurate for small values of $\alpha$
+% add prose detailing clm c0 coefficients
+\end{block}
+}
+
+\begin{block}{Applying Bdy-1}
+Implicit description of boundary, accurate for small values of $\alpha$
 \begin{equation}
     \label{eq:bdy1}
     \psi\left( \pm a, y \right) - \langle \psi\left( \pm a, y \right) \rangle = 2\alpha \psi_a \cos{k_y y}
 \end{equation} 
-Bdy-2: 
+\begin{equation}
+    d_0=\frac{1}{\sin{\mu a}} \lr{\psi_a - \lr{\overline{\psi} + \frac{\overline{F}}{\mu}}(1-\cos{\mu a})}
+\end{equation} 
+\begin{equation}
+d_1=\frac{\mu a \alpha}{\sinh{\kappa^{(1)}_x a}}\lr{d_0\cos{\mu a} + \lr{\frac{\overline{F}}{\mu}    + \overline{\psi}}\sin{\mu a}}
+\end{equation} 
+
+\end{block}
+
+\begin{block}{Applying Bdy-2}
+Explicit description of rippled boundary
+\begin{itemize}
+    \item accurate for a greater range of $\alpha$ 
+    \item Solution is more sophisticated -- used Taylor expansion approximation for terms $\sim O(\alpha^2)$ and expansion of Bessel Functions
+\end{itemize}
 \begin{equation}
     \label{eq:bdy2}
     x_{\text{bdy}}\left( y \right) =a\left( 1-\alpha\cos{k_y y} \right) 
 \end{equation} 
 
+\begin{multline}
+        \frac{d_p}{2}\sinh\lr{\kappa_p a}\besi{0}{\kappa_p a \alpha}+\sum_{l=1}^{\infty}d_l\lrsq{\sinh\lr{\kappa_l a}-\cosh\lr{\kappa_l a}}\besi{l-p}{\kappa_l a \alpha}\\
+        = -d_0\left[i^{p+1}e^{-i\mu a}\besj{p}{\mu a \alpha}\right]-\frac{i^p e^{-i\mu a}\lra{F_0}}{\mu}\besj{p}{\mu a \alpha},\label{eq2.42}
+\end{multline}
+    
 \end{block}
-}
 
-1a)\hspace{7.4in}1b)\break
+\break
 % \includegraphics[scale=1]{mu-test-DvsD.jpg}\includegraphics[scale=1]{mu-test-trace.jpg}
-\begin{block}{Figure 1 - Diffusion Model Benchmarking}
-The diffusion model was benchmarked in a purely toroidal field, tracing from a start point at $R=1.5m$ with diffusion coefficient (D) varied.
-4096 runs tracing 100 orbits at each value of D.
-\begin{itemize}
-\item[a)] Diffusion coefficient verified by calculating $D_{eff}=MSD/(4*L)$.
-\begin{itemize}
-\item MSD is mean squared displacement after 100 orbits, and $L=100*2*pi*1.5m$ is estimated path length.
-\item $D_{eff}=D_{in}$ line added to plot for reference.
-\end{itemize}
-\item[b)] An example run illustrating random walk. Points taken at $\Phi=0$ after each orbit.
-\end{itemize}
-\end{block}
 \end{textblock}
 
 
