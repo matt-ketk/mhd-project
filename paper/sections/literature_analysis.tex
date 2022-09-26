@@ -9,8 +9,23 @@ Given this representation, the rippled boundary conditions can be modeled as a r
 
 From the paper, the magnetic flux is expressed as a linear combination of sinusoidal functions. This solution form fits criterion such as the Helmholtz equation and the slab model geometry (which is Cartesian.)
 
-To find the coefficients in the equation, there were two ripple boundary conditions. Bdy-1 describes the ripple implicitly, and makes it easier to solve for. However, the solution is only accurate for small values of amplitude or alpha. Bdy-2 is a function of position for the ripple boundary and is accurate for higher values of alpha. Though, the solution from applying Bdy-2 can be difficult to solve.
+\begin{equation}
+    \hat{\psi}(x,y)=c_0 \cos{\mu x} + \sum_{l=1}^{\infty}c_l\cosh{\kappa_l x}\cos{\frac{lmy}{a}}+d_0\sin{\mu x}+\sum_{l=1}^{\infty}d_l\sinh{\kappa_l} x\cos{\frac{lmy}{a}}
+\end{equation} 
 
+To find the coefficients in the equation, there were two ripple boundary conditions. Bdy-1 describes the ripple implicitly, and makes it easier to solve for. However, the solution is only accurate for small values of amplitude or alpha,
+
+\begin{equation}
+    \psi\left( \pm a, y \right) - \langle \psi\left( \pm a, y \right) \rangle = 2\alpha \psi_a \cos{k_y y}
+\end{equation} 
+
+Bdy-2 is a function of position for the ripple boundary and is accurate for higher values of alpha. Though, the solution from applying Bdy-2 can be difficult to solve.
+
+\begin{equation}
+    x_{\text{bdy}}\left( y \right) =a\left( 1-\alpha\cos{k_y y} \right) 
+\end{equation} 
+
+% add figure here
 Here, Bdy-1 is solved and plotted on the left. The magnitude of the flux is greatest in regions of warm colors such as yellow. The gradient of the plot reflects some of the features in the flux presented in the paper. Also in the literature, as the magnitude of alpha increases, the boundary conditions of Bdy-1 start to diverge from Bdy-2.
 
 For Bdy-2, since the boundary condition is expressed as a function of position, substituting x into the general solution yields compositions of sinusoidal functions. There were two approaches to handling these terms. Either an expansion of the nested sinusoidals into a series of Bessel functions, or a Taylor expansion approximation with respect to alpha.
@@ -20,7 +35,6 @@ For Bdy-2, since the boundary condition is expressed as a function of position, 
 The Wang Bhattacharjee paper provides insight into the timescales as the plasma evolves under the boundary ripples presented in the previous paper. Briefly, the characteristic timescales of each phase are dependent on the exponential weightings of the Alfven and Resistive characteristic timescales. 
 
 At the beginning of the phases, the plasma timescale is more influenced by the Alfven timescale, which relates to more ideal effects in the plasma. Over time, the weighting transitions more onto the resistive timescales.
-
 
 \subsection{Hahm and Kulsrud (1985)}
 

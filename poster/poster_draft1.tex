@@ -1,0 +1,229 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{geometry}
+\usepackage{beamerposter}
+\usepackage{multicol}
+
+\usetheme{Berlin}
+\paperwidth=48in
+\paperheight=36in
+\setlength{\TPHorizModule}{1in}
+\setlength{\TPVertModule}{1in}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\bibliographystyle{abbrv}
+
+\begin{document}
+\begin{frame}[t]
+\begin{textblock}{30}(.5,.8)
+\fontsize{72}{60}\selectfont Exploring the formation and robustness of partially relaxed MHD states
+\end{textblock}
+\begin{textblock}{24}(37.5,0)
+\includegraphics[scale=.1]{uofwa.png}
+\end{textblock}
+\begin{textblock}{24}(40.6,2.3)
+\includegraphics[scale=1]{pppl.png}
+\end{textblock}
+\begin{textblock}{24}(43.5,.9)
+\includegraphics[scale=.1]{doe_logo.png}\break
+\end{textblock}
+
+
+
+
+\begin{textblock}{28}(.75,2.2)
+{\huge
+    M. Ketkaroonkul\textsuperscript{1},
+    A. Wright\textsuperscript{2}
+}
+\end{textblock}
+\begin{textblock}{24}(.75,3)
+{\large
+    \textsuperscript{1}University of Washington, Seattle,
+    \textsuperscript{2}Princeton Plasma Physics Laboratory
+}
+\end{textblock}
+
+
+
+
+\begin{textblock}{15}(.5,3.5)
+{\Large
+\begin{block}{Introduction}
+Multiregion Relaxed MHD (MRxMHD) is a model proposed to account for resistive effects in fusion plasmas
+\begin{itemize}
+    \item Alternating layers of ideal plasma and plasma undergoing Taylor Relaxation 
+    \item Critical tool for optimizing stellarator design
+    \item Model magnetic field perturbations in tokamaks
+\end{itemize}
+\end{block}
+
+
+\begin{block}{Mathematical Methods}
+In order to test the presence of interfaces in resistive plasma, where we typically expect current sheet structures to break down,
+\begin{itemize}
+    \item Application of mathematical methods -- Boundary Layer Theory, Perturbation Methods, Fourier Analysis
+\end{itemize}
+\end{block}
+
+
+
+\begin{block}{Hahm-Kulsrud-Taylor Beltrami Slab Model}
+Dewar et al. (2017) presents the following model for MRxMHD in a toroidal cross-section:
+A thin annular section of a toroidal cross-section transformed into Cartesion coords.
+\begin{itemize}
+    \item x-axis --- radial direction of toroidal cross-section
+    \item y-axis --- poloidal direction. Periodic. $y \in [-\pi,\pi]$
+\end{itemize}
+General form of solution is made to fit:
+\begin{itemize}
+    \item Helmholtz differential equation, $\left( \nabla^2 + \mu^2 \right) \hat{\psi}=0$
+    \item Slab model geometry
+\end{itemize}
+
+\begin{equation}
+    \begin{split}
+        \hat{\psi}_+ (x,y) & = c_0\cos{\mu x} + \sum_{l=1}^{\infty} c_{lm} \cos{\frac{lmy}{a}} \cosh{\kappa_{lm} x} \\
+                           & + d_0 \sin{\mu x} + \sum_{l=1}^{\infty} d_{lm} \cos{\frac{lmy}{a}} \sinh{\kappa_{lm} x}
+    \end{split}
+\end{equation} 
+
+The paper also presents the following boundary conditions
+Bdy-1: implicit description of boundary, accurate for small values of $\alpha$
+\begin{equation}
+    \label{eq:bdy1}
+    \psi\left( \pm a, y \right) - \langle \psi\left( \pm a, y \right) \rangle = 2\alpha \psi_a \cos{k_y y}
+\end{equation} 
+Bdy-2: 
+\begin{equation}
+    \label{eq:bdy2}
+    x_{\text{bdy}}\left( y \right) =a\left( 1-\alpha\cos{k_y y} \right) 
+\end{equation} 
+
+\end{block}
+}
+
+1a)\hspace{7.4in}1b)\break
+% \includegraphics[scale=1]{mu-test-DvsD.jpg}\includegraphics[scale=1]{mu-test-trace.jpg}
+\begin{block}{Figure 1 - Diffusion Model Benchmarking}
+The diffusion model was benchmarked in a purely toroidal field, tracing from a start point at $R=1.5m$ with diffusion coefficient (D) varied.
+4096 runs tracing 100 orbits at each value of D.
+\begin{itemize}
+\item[a)] Diffusion coefficient verified by calculating $D_{eff}=MSD/(4*L)$.
+\begin{itemize}
+\item MSD is mean squared displacement after 100 orbits, and $L=100*2*pi*1.5m$ is estimated path length.
+\item $D_{eff}=D_{in}$ line added to plot for reference.
+\end{itemize}
+\item[b)] An example run illustrating random walk. Points taken at $\Phi=0$ after each orbit.
+\end{itemize}
+\end{block}
+\end{textblock}
+
+
+
+\begin{textblock}{15}(16.5,3.5)
+{\Large
+\begin{block}{Limiter Connection Length Calculation}
+\begin{itemize}
+\item Tracing confirms previous models of limiter connection length distribution\cite{pederson}.
+\item Error field induced asymmetry in limiter connection lengths resembles experimental results.
+\begin{itemize}{\Large
+\item Features walk off limiter edge as observed in OP 1.1.
+}\end{itemize}
+\end{itemize}
+\end{block}
+}
+\end{textblock}
+
+
+
+
+\begin{textblock}{18}(16.1,7.8)
+2a)\break
+% \includegraphics[scale=.6]{l1-cad-rp-labelled.jpg}\break
+2c)\break
+% \includegraphics[scale=.6]{l5-ab-rp-labelled.jpg}\break
+2d)\break
+% \includegraphics[scale=.6]{l5-j25-rp-labelled.jpg}
+\end{textblock}
+\begin{textblock}{18}(20,7.8)
+2b)\break\break
+% \includegraphics[scale=2]{pederson.png}\break
+Above figure by Pedersen et. al.\cite{pederson}
+\end{textblock}
+
+
+
+
+\begin{textblock}{15}(16.5,32)
+\begin{block}{Figure 2 - Limiter Connection Lengths}
+All lengths in meters. All angles in radians.
+\begin{itemize}
+\item[a)] Traced using ideal CAD coil positions, demonstrating stellarator symmetry.
+\item[b)] Plots by Pedersen et. al.\cite{pederson} confirming results for ideal case and illustrating connection paths.
+\item[c)] Traced using coils adjusted for measured deviation in construction\cite{andreeva}, showing broken symmetry.
+\item[d)] Traced using coils adjusted for deviation in construction and deformation under load calculated by FEM\cite{andreeva}.
+\end{itemize}
+\end{block}
+\end{textblock}
+
+
+
+
+\begin{textblock}{15}(32.5,3.5)
+{\Large
+\begin{block}{Diffusion Modelling of Divertor Heat Flux}
+\begin{itemize}
+\item Initial results do not indicate significant load asymmetry.
+\item Diffusing fieldlines traced from closed surface near edge with $D=5x10^{-4}m^2/m$.
+\item Further modelling required to refine predictions.
+\end{itemize}
+\end{block}
+}
+\end{textblock}
+
+
+\begin{textblock}{15}(38.5,18.1)
+% \includegraphics[scale=.35]{mu-ab-3D.jpg}
+\end{textblock}
+\begin{textblock}{15}(33,7.6)
+3a)\break
+% \includegraphics[scale=.4]{count-Z-div1.jpg}\hspace{1in}
+% \includegraphics[scale=.4]{count-Z-div2.jpg}\break
+% \includegraphics[scale=.4]{count-Z-div3.jpg}\hspace{1in}
+% \includegraphics[scale=.4]{count-Z-div4.jpg}\break
+% \includegraphics[scale=.4]{count-Z-div5.jpg}
+\end{textblock}
+\begin{textblock}{15}(39.5,18.1)
+3b)\break
+\end{textblock}
+
+
+\begin{textblock}{15}(32.5,23)
+\begin{block}{Figure 3 - Divertor Strike Point Dsitribution}
+\begin{itemize}
+\item[a)]Histograms of strike point distribution in Z (100 bins) for each divertor section.
+Little difference can be seen between the ideal CAD coils and coils adjusted for deviation in construction.
+The plots demonstrate the expected symmetry in $\Phi$ and Z.
+\item[b)]A 3D model of the divertor system showing strike point distribution for the as-built coils.
+\end{itemize}
+\end{block}
+\end{textblock}
+
+
+\begin{textblock}{15}(32.5,26)
+\begin{block}{References}
+\nocite{lazerson}
+\bibliography{ref}
+\end{block}
+\begin{block}{Ackowledgments}
+This work was made possible by funding from the Department of Energy for the Summer Undergraduate Laboratory Internship (SULI) program. This work is supported by the US DOE Contract No. DE-AC02-09CH11466.
+\end{block}
+% \includegraphics[width=15in]{eurofusion_mergedlogo.jpg}
+\end{textblock}
+\end{frame}
+\end{document}
