@@ -137,69 +137,64 @@ The diffusion model was benchmarked in a purely toroidal field, tracing from a s
 \end{itemize}
 \end{block}
 }
+
+
 \end{textblock}
 
+\begin{textblock}{15}(16.5,24)
+\begin{block}{Linearization of MHD Equations via Perturbation Methods}
+The following equations presented in Hahm and Kulsrud (1985) 
+\begin{equation}
+    \label{eq:hk15}
+    \frac{\partial \psi}{\partial t} + \vec{V}\cdot \vec{\nabla} \psi= \frac{\eta}{\mu_0} \nabla ^2 \psi
+\end{equation} 
+\begin{equation}
+    \label{eq:hk16}
+    \rho\left( \frac{\partial }{\partial t} + \vec{V}\cdot \vec{\nabla} \right)\omega_z = \vec{B}\cdot \vec{\nabla}j_z
+\end{equation} 
+where
+\begin{equation}
+    \vec{V}= \hat{z}\times \vec{\nabla}\phi
+\end{equation} 
 
+\begin{equation}
+    \omega_z = \hat{z}\cdot \vec{\nabla}\times \vec{V}=\nabla ^{2}\phi
+\end{equation}
 
+Using a perturbation series with a small parameter $\varepsilon$,
+\begin{equation}
+   \psi=\sum_{n=0}^{\infty} \varepsilon^{n}\psi_n=\psi_0+\varepsilon\psi_1+\varepsilon^{2}\psi_2+\ldots 
+\end{equation}
+and substituting the variables within the MHD equations, the first order linearization of the equations are
+\begin{equation}
+    \frac{\partial \psi_1}{\partial t} -\frac{kB_0x}{a}\phi_1\left( x,t \right) = 0
+\end{equation} 
+\begin{equation}
+    \rho \frac{\partial}{\partial t} \frac{\partial^2}{\partial \chi^2} \phi_1(x,t) &= -\frac{kB_0 \chi}{\mu_0} \left( \frac{\partial ^2}{\partial \chi^2} \psi_1 \right)
+\end{equation} 
+where $\chi=x / a$ and $\tau=t / \tau_A$.
 
-\begin{textblock}{18}(16.1,7.8)
-2a)\break
-% \includegraphics[scale=.6]{l1-cad-rp-labelled.jpg}\break
-2c)\break
-% \includegraphics[scale=.6]{l5-ab-rp-labelled.jpg}\break
-2d)\break
-% \includegraphics[scale=.6]{l5-j25-rp-labelled.jpg}
-\end{textblock}
-\begin{textblock}{18}(20,7.8)
-2b)\break\break
-% \includegraphics[scale=2]{pederson.png}\break
-Above figure by Pedersen et. al.\cite{pederson}
-\end{textblock}
-
-
-
-
-\begin{textblock}{15}(16.5,32)
-\begin{block}{Figure 2 - Limiter Connection Lengths}
-All lengths in meters. All angles in radians.
-\begin{itemize}
-\item[a)] Traced using ideal CAD coil positions, demonstrating stellarator symmetry.
-\item[b)] Plots by Pedersen et. al.\cite{pederson} confirming results for ideal case and illustrating connection paths.
-\item[c)] Traced using coils adjusted for measured deviation in construction\cite{andreeva}, showing broken symmetry.
-\item[d)] Traced using coils adjusted for deviation in construction and deformation under load calculated by FEM\cite{andreeva}.
-\end{itemize}
 \end{block}
 \end{textblock}
-
-
-
 
 \begin{textblock}{15}(32.5,3.5)
 {\Large
-\begin{block}{Diffusion Modelling of Divertor Heat Flux}
-\begin{itemize}
-\item Initial results do not indicate significant load asymmetry.
-\item Diffusing fieldlines traced from closed surface near edge with $D=5x10^{-4}m^2/m$.
-\item Further modelling required to refine predictions.
-\end{itemize}
+\begin{block}{Timescale Evolution}
+\begin{tabular}{|l|l|l|}
+    \hline
+        & $\tau_A$ (ideal) & $\tau_R$ (non-ideal) \\
+    \hline
+        Phase A & 2/3 & 1/3 \\
+    \hline
+        Phase B & 2/5 & 3/5 \\
+    \hline
+        Phase C & 1/2 & 1/2 \\
+    \hline
+        Phase D & 1/4 & 3/4 \\
+    \hline
+\end{tabular}
 \end{block}
 }
-\end{textblock}
-
-
-\begin{textblock}{15}(38.5,18.1)
-% \includegraphics[scale=.35]{mu-ab-3D.jpg}
-\end{textblock}
-\begin{textblock}{15}(33,7.6)
-3a)\break
-% \includegraphics[scale=.4]{count-Z-div1.jpg}\hspace{1in}
-% \includegraphics[scale=.4]{count-Z-div2.jpg}\break
-% \includegraphics[scale=.4]{count-Z-div3.jpg}\hspace{1in}
-% \includegraphics[scale=.4]{count-Z-div4.jpg}\break
-% \includegraphics[scale=.4]{count-Z-div5.jpg}
-\end{textblock}
-\begin{textblock}{15}(39.5,18.1)
-3b)\break
 \end{textblock}
 
 
