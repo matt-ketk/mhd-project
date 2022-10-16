@@ -8,6 +8,7 @@
 \usepackage{geometry}
 \usepackage{beamerposter}
 \usepackage{multicol}
+\usepackage{xcolor}
 
 \usetheme{Berlin}
 \paperwidth=48in
@@ -71,29 +72,29 @@
 \end{textblock}
 
 \begin{textblock}{15}(.5,3.5)
-{\Large
 \begin{block}{Introduction}
 Multiregion Relaxed MHD (MRxMHD) is a model proposed to account for resistive effects in fusion plasmas
 \begin{itemize}
-    \item Alternating layers of ideal plasma and plasma undergoing Taylor Relaxation 
+    \item Ideal interfaces, or current sheets partitioning plasma regions undergoing Taylor Relaxation 
     \item Critical tool for optimizing stellarator design
     \item Model magnetic field perturbations in tokamaks
+    \item {\bf Motivation --} testing the robustness of ideal interfaces, a central assumption of the model 
 \end{itemize}
 \end{block}
 
 \begin{block}{Mathematical Methods}
-In order to test the presence of interfaces in resistive plasma, where we typically expect current sheet structures to break down,
+To test the robustness of ideal interfaces, which are assumed to persist in resistive plasmas,
 \begin{itemize}
     \item Application of mathematical methods -- Boundary Layer Theory, Perturbation Methods, Fourier Analysis
     \item Deriving equations from Dewar et al. (2017), Hahm and Kulsrud (1985)
     \item Analyzing Alfven $\tau_A$ and Resistivity $\tau_R$ timescales \cite{wangbhattacharjee}
 \end{itemize}
 \end{block}
-}
 
 \begin{block}{Hahm-Kulsrud-Taylor Beltrami Slab Model}
 Dewar et al. (2017) presents the following model for MRxMHD in a toroidal cross-section:
-A thin annular section of a toroidal cross-section transformed into Cartesion coords. \cite{dewar2017} (see figure 1a.)
+A thin annular section of a toroidal cross-section transformed into Cartesian coords. \cite{dewar2017} (see figure 1a.)
+The ansatz is significant in deriving the general solution to explore nonlinear vs. linear effects of a boundary perturbation.
 \begin{itemize}
     \item x-axis --- radial direction of toroidal cross-section
     \item y-axis --- poloidal direction. Periodic. $y \in [-\pi,\pi]$
@@ -101,8 +102,8 @@ A thin annular section of a toroidal cross-section transformed into Cartesion co
 
 \begin{equation}
     \begin{split}
-        \hat{\psi}_+ (x,y) & = c_0\cos{\mu x} + \sum_{l=1}^{\infty} c_{l} \cos{\frac{lmy}{a}} \cosh{\kappa_{lm} x} \\
-                           & + d_0 \sin{\mu x} + \sum_{l=1}^{\infty} d_{l} \cos{\frac{lmy}{a}} \sinh{\kappa_{lm} x}
+        \hat{\psi}_+ (x,y) & = \textcolor{red}{c_0}\cos{\mu x} + \sum_{l=1}^{\infty} \textcolor{red}{c_{l}} \cos{\frac{lmy}{a}} \cosh{\kappa_{lm} x} \\
+                           & + \textcolor{red}{d_0} \sin{\mu x} + \sum_{l=1}^{\infty} \textcolor{red}{d_{l}} \cos{\frac{lmy}{a}} \sinh{\kappa_{lm} x}
     \end{split}
 \end{equation} 
 where
@@ -110,28 +111,30 @@ where
 \begin{itemize}
     \item \begin{equation}
                 k_l = \pm i \kappa_l = \sqrt{\left({\frac{lm}{a}}\right)^2 - \mu^2}
-    \end{equation} 
+    \end{equation}
+\item $\psi=\overline{\psi} + \frac{\overline{F}}{\mu} (1-\cos\mu x) + \hat{\psi}$
     \item $m$ is an integer mode multiple
     \item $a$ is the characteristic length of the slab model
     \item $c_0=-\overline{\psi},d_0=c_l=0,d_l$ to be determined
 
 \end{itemize}
+
 \end{block}
 \end{textblock}
 
-\begin{textblock}{15}(.5,22)
+\begin{textblock}{15}(.5,19)
     \includegraphics[scale=1]{dewar-boundary-ripples.png} 
     \newline
     1a. Slab Model as presented in Dewar et al. (2017). \cite{dewar2017}
 \end{textblock}
 
-\begin{textblock}{15}(8.75,21.5)
+\begin{textblock}{15}(8.75,18.5)
     \includegraphics[scale=1.2]{bdy-1_general-solution.png} 
     \newline
     1b. Plotted flux function applying Bdy-1. \cite{dewar2017}
 \end{textblock}
 
-\begin{textblock}{15}(.5,27)
+\begin{textblock}{15}(.5,24)
     \includegraphics[scale=1]{dewar-bdy1-error.png} 
     \newline
     1c. As $\alpha$ increases, the boundary ripple from Bdy-1 deviates from the actual. \cite{dewar2017}
@@ -142,7 +145,7 @@ where
 
 \begin{textblock}{15}(16.5,3.5)
 \begin{block}{Applying Bdy-1}
-    Implicit description of boundary, accurate for small values of $\alpha$ \cite{dewar2017} (see figure 1c.)
+    Implicit description of boundary perturbation, accurate for small values of $\alpha$ \cite{dewar2017} (see figure 1c.)
 \begin{equation}
     \label{eq:bdy1}
     \psi\left( \pm a, y \right) - \langle \psi\left( \pm a, y \right) \rangle = 2\alpha \psi_a \cos{\frac{lmy}{a}}
@@ -180,10 +183,10 @@ which yields the solution
 
 \begin{block}{Taylor Expansion Approximation of Bdy-2}
 \begin{equation}
-    d_0=\frac{1}{\sin{\mu a}} \lr{\psi_a - \lr{\overline{\psi} + \frac{\overline{F}}{\mu}}(1-\cos{\mu a})}
+    \textcolor{red}{d_0}=\frac{1}{\sin{\mu a}} \lr{\psi_a - \lr{\overline{\psi} + \frac{\overline{F}}{\mu}}(1-\cos{\mu a})}
 \end{equation} 
 \begin{equation}
-d_1=\frac{\mu a \alpha}{\sinh{\kappa_1 a}}\lr{d_0\cos{\mu a} + \lr{\frac{\overline{F}}{\mu}    + \overline{\psi}}\sin{\mu a}}
+    \textcolor{red}{d_1}=\frac{\mu a \alpha}{\sinh{\kappa_1 a}}\lr{d_0\cos{\mu a} + \lr{\frac{\overline{F}}{\mu}    + \overline{\psi}}\sin{\mu a}}
 \end{equation} 
 
 where
@@ -194,18 +197,19 @@ where
 
 \end{block}
 \begin{block}{Bessel Function Solution of Bdy-2}
+The following equation describes a simultaneous system of equations
 \begin{multline}
-        \frac{d_p}{2}\sinh\lr{\kappa_p a}\besi{0}{\kappa_p a \alpha}+\sum_{l=1}^{\infty}d_l\lrsq{\sinh\lr{\kappa_l a}-\cosh\lr{\kappa_l a}}\besi{l-p}{\kappa_l a \alpha}\\
-        = -d_0\left[i^{p+1}e^{-i\mu a}\besj{p}{\mu a \alpha}\right]-\frac{i^p e^{-i\mu a}\lra{F_0}}{\mu}\besj{p}{\mu a \alpha},\label{eq2.42}
+    \frac{\textcolor{red}{d_p}}{2}\sinh\lr{\kappa_p a}\besi{0}{\kappa_p a \alpha}+\sum_{l=1}^{\infty}\textcolor{red}{d_l}\lrsq{\sinh\lr{\kappa_l a}-\cosh\lr{\kappa_l a}}\besi{l-p}{\kappa_l a \alpha}\\
+    = -\textcolor{red}{d_0}\left[i^{p+1}e^{-i\mu a}\besj{p}{\mu a \alpha}\right]-\frac{i^p e^{-i\mu a}\lra{F_0}}{\mu}\besj{p}{\mu a \alpha},\label{eq2.42}
 \end{multline}
 \begin{itemize}
-    \item $p$ is an index
+    \item $p$ is a mode number which can vary to form the system of equations. By truncating the series with index $l$, we can vary $p$ to account for the system of equations for the coefficients
 \end{itemize}
     
 \end{block}
 
 \begin{block}{MHD Equation Models}
-    The following equations presented in Hahm and Kulsrud (1985) \cite{hahmkulsrud}
+    The following equations presented in Hahm and Kulsrud (1985) are the MHD equations that will be used to test the assumptions of MRxMHD against \cite{hahmkulsrud}. The general solution derived from Dewar et al. will be tested in these MHD equations.
 \begin{equation}
     \label{eq:hk15}
     \frac{\partial \psi}{\partial t} + \vec{V}\cdot \vec{\nabla} \psi= \frac{\eta}{\mu_0} \nabla ^2 \psi
@@ -237,19 +241,14 @@ where
 
 % \includegraphics[scale=1]{mu-test-DvsD.jpg}\includegraphics[scale=1]{mu-test-trace.jpg}
 
-\begin{textblock}{15}(16.5,24)
-{\Large
-}
-\end{textblock}
 
 \begin{textblock}{15}(32.5,3.5)
-{\Large
 \begin{block}{Linearization of MHD Equations via Perturbation Methods}
 Using a perturbation series with a small parameter $\varepsilon$,
 \begin{equation}
    \psi=\sum_{n=0}^{\infty} \varepsilon^{n}\psi_n=\psi_0+\varepsilon\psi_1+\varepsilon^{2}\psi_2+\ldots 
 \end{equation}
-and substituting the variables within the MHD equations, the first order linearization of the equations are
+and substituting the variables within the MHD equations, the first order equations are
 \begin{equation}
     \frac{\partial \psi_1}{\partial t} -\frac{kB_0x}{a}\phi_1\left( x,t \right) = 0
 \end{equation} 
@@ -287,14 +286,19 @@ where $\chi=x / a$ and $\tau=t / \tau_A$.
 
 \begin{block}{Further Work}
 \begin{itemize}
-    \item Comparing derivations of coefficients from Bdy-1 and Bdy-2 presented in Dewar et al. (2017)
-    \item Developing coefficient solver for Bdy-2
-    \item Testing the magnetic flux solution found in Dewar et al. (2017) with the linearized equations derived in Hahm and Kulsrud (1985)
+    \item General solution in Dewar et al.
+        \begin{itemize}
+            \item Comparing derivations of coefficients from Bdy-1 and Bdy-2 presented in Dewar et al. (2017)
+            \item Developing coefficient solver for Bdy-2
+            \item Testing the magnetic flux solution found in Dewar et al. (2017) with the linearized equations derived in Hahm and Kulsrud (1985)
+        \end{itemize}
     \item Applying Boundary Layer Theory methods to study local properties of ideal interfaces
-    \item Utilizing non-dimensionalization of linearized differential equations to determine Alfvén and resistivity timescales ($\tau_A$ and $\tau_R$.)
+    \item MHD Equations in Hahm and Kulsrud
+        \begin{itemize}
+            \item Utilizing non-dimensionalization of linearized differential equations to determine hybrid characteristic timescales (a mix of Alfvén and resistivity timescales ($\tau_A$ and $\tau_R$.))
+        \end{itemize}
 \end{itemize}
 \end{block}
-}
 \begin{block}{References}
 \nocite{lazerson}
 \bibliography{ref}
